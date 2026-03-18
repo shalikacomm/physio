@@ -1,0 +1,756 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HAS Physiotherapy Centre — Nugegoda</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --teal:#0A7B6B; --teal-mid:#0E9E8A; --teal-light:#3DBDAA; --teal-pale:#E6F7F5;
+  --teal-faint:#F0FAF9;
+  --navy:#0B2340; --navy-mid:#143357;
+  --warm:#F7F3EE; --warm-mid:#EDE8E0;
+  --text:#1A1A1A; --text-mid:#4A5568; --text-muted:#8A9BB0;
+  --wa:#25D366; --wa-dark:#128C4A;
+  --gold:#C8923A; --gold-light:#F0D4A8;
+  --white:#FFFFFF;
+  --radius:12px; --radius-lg:20px;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:'DM Sans',sans-serif;background:var(--white);color:var(--text);overflow-x:hidden;}
+
+/* ── NAV ── */
+nav{position:fixed;top:0;left:0;right:0;z-index:300;display:flex;align-items:center;justify-content:space-between;padding:16px 52px;background:rgba(255,255,255,0.97);backdrop-filter:blur(12px);border-bottom:1px solid rgba(10,123,107,0.1);box-shadow:0 2px 20px rgba(0,0,0,0.06);}
+.nav-logo{display:flex;align-items:center;gap:12px;}
+.nav-logo-mark{width:38px;height:38px;background:var(--teal);border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.nav-logo-mark svg{width:22px;height:22px;fill:white;}
+.nav-logo-text{font-family:'DM Serif Display',serif;font-size:19px;color:var(--navy);}
+.nav-logo-text span{color:var(--teal);}
+.nav-links{display:flex;gap:30px;}
+.nav-links a{font-size:13px;font-weight:400;color:var(--text-mid);text-decoration:none;transition:color .2s;letter-spacing:.01em;}
+.nav-links a:hover{color:var(--teal);}
+.nav-book{background:var(--teal);color:white;font-size:13px;font-weight:500;padding:10px 22px;border-radius:8px;border:none;cursor:pointer;font-family:'DM Sans',sans-serif;transition:all .2s;text-decoration:none;display:inline-block;}
+.nav-book:hover{background:var(--teal-mid);transform:translateY(-1px);box-shadow:0 4px 14px rgba(10,123,107,0.3);}
+
+/* ── HERO ── */
+.hero{min-height:100vh;display:grid;grid-template-columns:1fr 1fr;background:var(--warm);padding-top:74px;position:relative;overflow:hidden;}
+.hero::before{content:'';position:absolute;top:-80px;right:-80px;width:500px;height:500px;border-radius:50%;background:radial-gradient(circle,rgba(10,123,107,0.08) 0%,transparent 70%);pointer-events:none;}
+.hero::after{content:'';position:absolute;bottom:-100px;left:200px;width:600px;height:300px;border-radius:50%;background:radial-gradient(circle,rgba(10,123,107,0.05) 0%,transparent 70%);pointer-events:none;}
+.hero-left{display:flex;flex-direction:column;justify-content:center;padding:72px 56px 72px 72px;position:relative;z-index:2;}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:white;border:1px solid rgba(10,123,107,0.2);border-radius:100px;padding:7px 16px;font-size:12px;font-weight:500;color:var(--teal);margin-bottom:28px;width:fit-content;animation:fadeUp .7s ease both;}
+.hero-badge::before{content:'';width:7px;height:7px;background:var(--teal);border-radius:50%;animation:blink 2s ease-in-out infinite;}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
+h1.hero-title{font-family:'DM Serif Display',serif;font-size:clamp(38px,4.2vw,62px);font-weight:400;line-height:1.12;color:var(--navy);margin-bottom:22px;animation:fadeUp .7s .1s ease both;}
+h1.hero-title em{font-style:italic;color:var(--teal);}
+.hero-sub{font-size:15px;line-height:1.8;color:var(--text-mid);max-width:420px;margin-bottom:38px;font-weight:300;animation:fadeUp .7s .2s ease both;}
+.hero-ctas{display:flex;gap:14px;align-items:center;flex-wrap:wrap;animation:fadeUp .7s .3s ease both;}
+.btn-primary{background:var(--teal);color:white;font-size:14px;font-weight:500;padding:14px 30px;border-radius:10px;border:none;cursor:pointer;font-family:'DM Sans',sans-serif;transition:all .25s;display:flex;align-items:center;gap:8px;}
+.btn-primary:hover{background:var(--teal-mid);transform:translateY(-2px);box-shadow:0 6px 20px rgba(10,123,107,0.3);}
+.btn-outline{background:white;color:var(--teal);font-size:14px;font-weight:500;padding:14px 28px;border-radius:10px;border:1.5px solid var(--teal);cursor:pointer;font-family:'DM Sans',sans-serif;transition:all .25s;}
+.btn-outline:hover{background:var(--teal-pale);transform:translateY(-1px);}
+.hero-trust{display:flex;gap:20px;margin-top:36px;animation:fadeUp .7s .4s ease both;}
+.htrust{display:flex;align-items:center;gap:8px;font-size:12px;color:var(--text-muted);}
+.htrust-dot{width:5px;height:5px;border-radius:50%;background:var(--teal-light);}
+
+/* hero right — visual panel */
+.hero-right{display:flex;align-items:center;justify-content:center;position:relative;padding:60px 52px 60px 20px;}
+.hero-card{background:white;border-radius:var(--radius-lg);box-shadow:0 20px 60px rgba(0,0,0,0.1);padding:36px;width:100%;max-width:380px;position:relative;animation:fadeUp .7s .2s ease both;}
+.hero-card-header{display:flex;align-items:center;gap:14px;margin-bottom:28px;padding-bottom:20px;border-bottom:1px solid var(--warm-mid);}
+.hero-card-avatar{width:56px;height:56px;border-radius:14px;background:linear-gradient(135deg,var(--teal) 0%,var(--teal-mid) 100%);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.hero-card-avatar svg{width:30px;height:30px;fill:white;}
+.hero-card-name{font-family:'DM Serif Display',serif;font-size:17px;color:var(--navy);}
+.hero-card-title{font-size:12px;color:var(--text-muted);margin-top:2px;}
+.hero-card-exp{display:inline-flex;align-items:center;gap:6px;background:var(--teal-pale);color:var(--teal);font-size:11px;font-weight:500;padding:4px 10px;border-radius:6px;margin-top:4px;}
+.hours-strip{background:var(--teal-faint);border-radius:10px;padding:16px 18px;margin-bottom:20px;}
+.hours-row{display:flex;justify-content:space-between;align-items:center;}
+.hours-label{font-size:12px;font-weight:500;color:var(--teal);}
+.hours-val{font-size:13px;color:var(--navy);font-weight:500;}
+.hours-note{font-size:11px;color:var(--text-muted);margin-top:5px;}
+.services-mini{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:20px;}
+.svc-mini{background:var(--warm);border-radius:8px;padding:12px;text-align:center;}
+.svc-mini-icon{font-size:20px;margin-bottom:5px;}
+.svc-mini-name{font-size:11px;font-weight:500;color:var(--navy);}
+.wa-book-btn{width:100%;background:var(--wa);color:white;font-size:13px;font-weight:500;padding:14px;border-radius:10px;border:none;cursor:pointer;font-family:'DM Sans',sans-serif;display:flex;align-items:center;justify-content:center;gap:9px;transition:all .25s;}
+.wa-book-btn:hover{background:var(--wa-dark);transform:translateY(-1px);box-shadow:0 4px 16px rgba(37,211,102,0.35);}
+.wa-book-btn svg{width:18px;height:18px;fill:white;}
+
+/* floating badges on hero */
+.float-badge{position:absolute;background:white;border-radius:12px;box-shadow:0 8px 24px rgba(0,0,0,0.1);padding:12px 16px;display:flex;align-items:center;gap:10px;font-size:12px;animation:float 4s ease-in-out infinite;}
+.float-badge.fb1{top:80px;right:30px;animation-delay:0s;}
+.float-badge.fb2{bottom:120px;left:20px;animation-delay:1.5s;}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+.fb-icon{width:32px;height:32px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:16px;}
+.fb-text{line-height:1.4;}
+.fb-text strong{display:block;color:var(--navy);font-weight:500;}
+.fb-text span{color:var(--text-muted);}
+
+/* ── TRUST BAR ── */
+.trust-bar{background:var(--navy);padding:18px 52px;display:flex;align-items:center;justify-content:center;gap:52px;flex-wrap:wrap;}
+.tbar-item{display:flex;align-items:center;gap:10px;font-size:12px;color:rgba(255,255,255,0.65);}
+.tbar-icon{width:28px;height:28px;background:rgba(255,255,255,0.1);border-radius:7px;display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0;}
+
+/* ── SECTIONS ── */
+.section{padding:88px 72px;}
+.eyebrow{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--teal);margin-bottom:12px;font-weight:500;}
+.sec-title{font-family:'DM Serif Display',serif;font-size:clamp(32px,3.4vw,50px);font-weight:400;line-height:1.15;color:var(--navy);margin-bottom:48px;}
+.sec-title em{font-style:italic;color:var(--teal);}
+
+/* ── SERVICES ── */
+.services{background:var(--white);}
+.services-intro{font-size:15px;line-height:1.8;color:var(--text-mid);max-width:560px;margin-top:-28px;margin-bottom:52px;font-weight:300;}
+.svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+.svc-card{background:var(--warm);border-radius:var(--radius-lg);padding:36px 28px;border:1.5px solid transparent;transition:all .3s;cursor:default;position:relative;overflow:hidden;}
+.svc-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--teal),var(--teal-light));transform:scaleX(0);transition:transform .3s;transform-origin:left;}
+.svc-card:hover{border-color:rgba(10,123,107,0.2);background:white;box-shadow:0 8px 30px rgba(10,123,107,0.08);transform:translateY(-4px);}
+.svc-card:hover::before{transform:scaleX(1);}
+.svc-icon-wrap{width:56px;height:56px;background:var(--teal-pale);border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:26px;margin-bottom:20px;transition:background .3s;}
+.svc-card:hover .svc-icon-wrap{background:var(--teal);font-size:28px;}
+.svc-name{font-family:'DM Serif Display',serif;font-size:20px;color:var(--navy);margin-bottom:10px;}
+.svc-desc{font-size:13px;line-height:1.7;color:var(--text-mid);font-weight:300;}
+.svc-tag{display:inline-block;background:var(--teal-pale);color:var(--teal);font-size:11px;font-weight:500;padding:4px 10px;border-radius:6px;margin-top:14px;}
+
+/* ── BOOKING SECTION ── */
+.booking{background:linear-gradient(135deg,var(--navy) 0%,var(--navy-mid) 100%);padding:88px 72px;position:relative;overflow:hidden;}
+.booking::before{content:'';position:absolute;top:-100px;right:-100px;width:500px;height:500px;border-radius:50%;background:radial-gradient(circle,rgba(10,123,107,0.25) 0%,transparent 65%);}
+.booking::after{content:'';position:absolute;bottom:-80px;left:-60px;width:350px;height:350px;border-radius:50%;background:radial-gradient(circle,rgba(61,189,170,0.12) 0%,transparent 65%);}
+.booking-inner{position:relative;z-index:2;display:grid;grid-template-columns:1fr 1.2fr;gap:72px;align-items:start;}
+.booking-left .eyebrow{color:var(--teal-light);}
+.booking-left .sec-title{color:white;margin-bottom:18px;}
+.booking-sub{font-size:14px;line-height:1.8;color:rgba(255,255,255,0.55);font-weight:300;margin-bottom:32px;}
+.booking-info{display:flex;flex-direction:column;gap:14px;}
+.binfo{display:flex;align-items:flex-start;gap:14px;padding:16px 18px;background:rgba(255,255,255,0.06);border-radius:10px;border:1px solid rgba(255,255,255,0.08);}
+.binfo-icon{font-size:20px;flex-shrink:0;margin-top:2px;}
+.binfo-text{font-size:13px;color:rgba(255,255,255,0.65);line-height:1.6;font-weight:300;}
+.binfo-text strong{color:white;display:block;font-weight:500;margin-bottom:2px;font-size:12px;letter-spacing:.06em;text-transform:uppercase;}
+
+/* booking widget */
+.booking-widget{background:white;border-radius:var(--radius-lg);padding:32px;box-shadow:0 20px 60px rgba(0,0,0,0.2);}
+.bw-title{font-family:'DM Serif Display',serif;font-size:22px;color:var(--navy);margin-bottom:6px;}
+.bw-sub{font-size:13px;color:var(--text-muted);margin-bottom:24px;}
+
+/* Day selector */
+.day-label{font-size:11px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--teal);margin-bottom:10px;}
+.day-scroll{display:flex;gap:8px;overflow-x:auto;padding-bottom:4px;margin-bottom:20px;scrollbar-width:none;}
+.day-scroll::-webkit-scrollbar{display:none;}
+.day-btn{flex-shrink:0;display:flex;flex-direction:column;align-items:center;gap:3px;padding:10px 14px;border-radius:10px;border:1.5px solid var(--warm-mid);background:white;cursor:pointer;transition:all .2s;font-family:'DM Sans',sans-serif;}
+.day-btn:hover{border-color:var(--teal-light);background:var(--teal-faint);}
+.day-btn.active{border-color:var(--teal);background:var(--teal);color:white;}
+.day-btn.closed{opacity:.4;cursor:not-allowed;}
+.day-name{font-size:11px;font-weight:500;color:inherit;letter-spacing:.04em;}
+.day-date{font-size:15px;font-weight:500;color:inherit;}
+.day-btn.active .day-name,.day-btn.active .day-date{color:white;}
+
+/* Time slots */
+.slot-label{font-size:11px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--teal);margin-bottom:10px;}
+.slots-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:20px;}
+.slot-btn{padding:10px 8px;border-radius:8px;border:1.5px solid var(--warm-mid);background:white;cursor:pointer;font-size:13px;font-weight:400;color:var(--text-mid);transition:all .2s;font-family:'DM Sans',sans-serif;text-align:center;}
+.slot-btn:hover{border-color:var(--teal-light);background:var(--teal-faint);color:var(--teal);}
+.slot-btn.active{border-color:var(--teal);background:var(--teal);color:white;font-weight:500;}
+.slot-btn.taken{background:var(--warm);color:var(--text-muted);cursor:not-allowed;text-decoration:line-through;opacity:.5;}
+
+/* Patient name input */
+.bw-name-wrap{margin-bottom:16px;}
+.bw-name-label{font-size:11px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--text-muted);margin-bottom:8px;display:block;}
+.bw-name-input{width:100%;padding:12px 14px;border:1.5px solid var(--warm-mid);border-radius:9px;font-family:'DM Sans',sans-serif;font-size:14px;color:var(--text);outline:none;transition:border-color .2s;background:white;}
+.bw-name-input:focus{border-color:var(--teal);}
+.bw-name-input::placeholder{color:var(--text-muted);}
+
+/* Confirm button */
+.bw-confirm{width:100%;background:var(--wa);color:white;font-size:14px;font-weight:500;padding:15px;border-radius:10px;border:none;cursor:pointer;font-family:'DM Sans',sans-serif;display:flex;align-items:center;justify-content:center;gap:9px;transition:all .25s;}
+.bw-confirm:hover{background:var(--wa-dark);box-shadow:0 4px 18px rgba(37,211,102,0.35);transform:translateY(-1px);}
+.bw-confirm:disabled{background:#ccc;cursor:not-allowed;transform:none;box-shadow:none;}
+.bw-confirm svg{width:18px;height:18px;fill:white;}
+.bw-hint{font-size:11px;color:var(--text-muted);text-align:center;margin-top:10px;}
+
+/* ── ABOUT / CREDENTIALS ── */
+.about{background:var(--teal-faint);padding:88px 72px;}
+.about-grid{display:grid;grid-template-columns:1.1fr 1fr;gap:72px;align-items:center;}
+.about-credentials{display:flex;flex-direction:column;gap:3px;}
+.cred-card{background:white;border-radius:var(--radius);padding:20px 22px;border-left:4px solid var(--teal);display:flex;align-items:flex-start;gap:16px;transition:box-shadow .25s;}
+.cred-card:hover{box-shadow:0 6px 20px rgba(10,123,107,0.1);}
+.cred-icon{font-size:24px;flex-shrink:0;margin-top:2px;}
+.cred-title{font-size:13px;font-weight:500;color:var(--navy);margin-bottom:4px;}
+.cred-desc{font-size:12px;color:var(--text-muted);line-height:1.6;font-weight:300;}
+.about-right .eyebrow{color:var(--teal);}
+.about-right .sec-title{color:var(--navy);margin-bottom:18px;}
+.about-text{font-size:14px;line-height:1.85;color:var(--text-mid);font-weight:300;margin-bottom:28px;}
+.about-stat-row{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:28px;}
+.astat{background:white;border-radius:var(--radius);padding:20px;text-align:center;box-shadow:0 2px 12px rgba(0,0,0,0.05);}
+.astat-n{font-family:'DM Serif Display',serif;font-size:34px;color:var(--teal);}
+.astat-l{font-size:12px;color:var(--text-muted);margin-top:3px;}
+.about-wa{display:flex;align-items:center;gap:10px;background:var(--wa);color:white;padding:13px 22px;border-radius:10px;text-decoration:none;font-size:13px;font-weight:500;width:fit-content;transition:all .25s;}
+.about-wa:hover{background:var(--wa-dark);transform:translateY(-1px);}
+.about-wa svg{width:18px;height:18px;fill:white;}
+
+/* ── WHY US ── */
+.whyus{background:white;padding:80px 72px;}
+.whyus .sec-title{color:var(--navy);}
+.why-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;}
+.why-card{background:var(--warm);border-radius:var(--radius-lg);padding:28px 22px;text-align:center;transition:all .3s;}
+.why-card:hover{background:var(--teal);transform:translateY(-4px);box-shadow:0 12px 32px rgba(10,123,107,0.2);}
+.why-icon{font-size:32px;margin-bottom:14px;}
+.why-title{font-size:14px;font-weight:500;color:var(--navy);margin-bottom:8px;transition:color .3s;}
+.why-card:hover .why-title{color:white;}
+.why-desc{font-size:12px;line-height:1.6;color:var(--text-muted);font-weight:300;transition:color .3s;}
+.why-card:hover .why-desc{color:rgba(255,255,255,0.8);}
+
+/* ── HOURS ── */
+.hours-section{background:var(--navy);padding:72px;position:relative;overflow:hidden;}
+.hours-section::before{content:'';position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%230A7B6B' fill-opacity='0.07'%3E%3Ccircle cx='30' cy='30' r='1.5'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");}
+.hours-inner{position:relative;z-index:2;display:grid;grid-template-columns:1fr 1.4fr;gap:72px;align-items:center;}
+.hours-inner .eyebrow{color:var(--teal-light);}
+.hours-inner .sec-title{color:white;margin-bottom:18px;}
+.hours-desc{font-size:14px;line-height:1.8;color:rgba(255,255,255,0.5);font-weight:300;}
+.hours-table{background:rgba(255,255,255,0.06);border-radius:var(--radius-lg);overflow:hidden;border:1px solid rgba(255,255,255,0.08);}
+.hours-row{display:grid;grid-template-columns:1fr 1fr 1fr;align-items:center;padding:15px 22px;border-bottom:1px solid rgba(255,255,255,0.06);transition:background .2s;}
+.hours-row:last-child{border-bottom:none;}
+.hours-row:hover{background:rgba(255,255,255,0.04);}
+.hours-row.header{background:rgba(10,123,107,0.3);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--teal-light);}
+.hours-day{font-size:13px;color:white;font-weight:400;}
+.hours-time{font-size:13px;color:rgba(255,255,255,0.7);}
+.hours-status{display:flex;justify-content:flex-end;}
+.status-open{background:rgba(61,189,170,0.2);color:var(--teal-light);font-size:11px;font-weight:500;padding:3px 10px;border-radius:100px;}
+.status-closed{background:rgba(255,100,100,0.15);color:rgba(255,140,140,0.8);font-size:11px;font-weight:500;padding:3px 10px;border-radius:100px;}
+
+/* ── LOCATION ── */
+.location{background:var(--warm);padding:72px;}
+.location-grid{display:grid;grid-template-columns:1fr 1fr;gap:52px;align-items:center;}
+.map-placeholder{background:linear-gradient(135deg,#e8f0fe 0%,#dbeafe 100%);border-radius:var(--radius-lg);height:320px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;border:1px solid rgba(10,123,107,0.15);position:relative;overflow:hidden;}
+.map-placeholder::before{content:'';position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%230A7B6B' fill-opacity='0.06'%3E%3Cpath d='M0 0h40v40H0z'/%3E%3Cpath d='M0 20h40M20 0v40' stroke='%230A7B6B' stroke-opacity='.08' stroke-width='.5'/%3E%3C/g%3E%3C/svg%3E");}
+.map-pin{width:52px;height:52px;background:var(--teal);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:24px;box-shadow:0 0 0 12px rgba(10,123,107,0.15);position:relative;z-index:1;animation:pin-pulse 2s ease-in-out infinite;}
+@keyframes pin-pulse{0%,100%{box-shadow:0 0 0 12px rgba(10,123,107,0.15)}50%{box-shadow:0 0 0 20px rgba(10,123,107,0.08)}}
+.map-label{font-size:15px;font-weight:500;color:var(--navy);position:relative;z-index:1;}
+.map-sub{font-size:12px;color:var(--text-muted);position:relative;z-index:1;}
+.map-glink{display:inline-flex;align-items:center;gap:6px;background:white;border:1px solid rgba(10,123,107,0.2);color:var(--teal);font-size:12px;font-weight:500;padding:8px 16px;border-radius:8px;text-decoration:none;transition:all .2s;position:relative;z-index:1;}
+.map-glink:hover{background:var(--teal-pale);}
+.location-info{display:flex;flex-direction:column;gap:16px;}
+.linfo{display:flex;gap:14px;align-items:flex-start;padding:18px 20px;background:white;border-radius:var(--radius);box-shadow:0 2px 10px rgba(0,0,0,0.04);}
+.linfo-icon{width:40px;height:40px;background:var(--teal-pale);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;}
+.linfo-title{font-size:12px;font-weight:500;letter-spacing:.06em;text-transform:uppercase;color:var(--teal);margin-bottom:3px;}
+.linfo-val{font-size:14px;color:var(--navy);font-weight:400;}
+.linfo-note{font-size:12px;color:var(--text-muted);margin-top:2px;}
+
+/* ── WA FLOAT ── */
+.wa-float{position:fixed;bottom:24px;right:24px;z-index:400;display:flex;align-items:center;gap:8px;background:var(--wa);color:white;padding:12px 20px;border-radius:50px;text-decoration:none;font-size:13px;font-weight:500;box-shadow:0 4px 20px rgba(37,211,102,0.4);transition:all .25s;}
+.wa-float:hover{background:var(--wa-dark);transform:translateY(-2px);box-shadow:0 6px 28px rgba(37,211,102,0.5);}
+.wa-float svg{width:20px;height:20px;fill:white;}
+.wa-pulse{position:absolute;top:-4px;right:-4px;width:14px;height:14px;background:white;border-radius:50%;display:flex;align-items:center;justify-content:center;}
+.wa-pulse::after{content:'';width:8px;height:8px;background:var(--wa);border-radius:50%;animation:blink 1.5s ease-in-out infinite;}
+
+/* ── FOOTER ── */
+footer{background:var(--navy);color:rgba(255,255,255,0.5);padding:52px 72px 32px;}
+.footer-top{display:grid;grid-template-columns:1.8fr 1fr 1fr;gap:56px;margin-bottom:40px;}
+.footer-brand{display:flex;align-items:center;gap:12px;margin-bottom:14px;}
+.footer-brand-mark{width:36px;height:36px;background:var(--teal);border-radius:9px;display:flex;align-items:center;justify-content:center;}
+.footer-brand-mark svg{width:20px;height:20px;fill:white;}
+.footer-brand-name{font-family:'DM Serif Display',serif;font-size:18px;color:white;}
+.footer-desc{font-size:12px;line-height:1.75;max-width:260px;font-weight:300;}
+.footer-col-t{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--teal-light);margin-bottom:16px;font-weight:500;}
+.footer-col ul{list-style:none;display:flex;flex-direction:column;gap:10px;}
+.footer-col ul li a{font-size:13px;color:rgba(255,255,255,0.45);text-decoration:none;transition:color .2s;}
+.footer-col ul li a:hover{color:var(--teal-light);}
+.footer-bottom{border-top:1px solid rgba(255,255,255,0.08);padding-top:20px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;}
+.footer-copy{font-size:12px;}
+.footer-open{display:flex;align-items:center;gap:7px;font-size:12px;color:var(--teal-light);}
+.footer-open::before{content:'';width:6px;height:6px;background:var(--teal-light);border-radius:50%;animation:blink 2s infinite;}
+
+/* ── WA SVG ── */
+.wa-svg-d1{fill-rule:evenodd;}
+@keyframes fadeUp{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:translateY(0)}}
+</style>
+</head>
+<body>
+
+<!-- FLOATING WA -->
+<a href="https://wa.me/94714789763?text=Hi%20HAS%20Physiotherapy!%20I%27d%20like%20to%20book%20an%20appointment." class="wa-float" target="_blank">
+  <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.123.553 4.116 1.524 5.845L.057 23.547a.562.562 0 0 0 .694.547l5.888-1.539A11.95 11.95 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.793 9.793 0 0 1-5.027-1.384l-.36-.214-3.735.978.997-3.645-.234-.374A9.781 9.781 0 0 1 2.182 12C2.182 6.567 6.567 2.182 12 2.182S21.818 6.567 21.818 12 17.433 21.818 12 21.818z"/></svg>
+  Book via WhatsApp
+  <div class="wa-pulse"></div>
+</a>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">
+    <div class="nav-logo-mark">
+      <svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm1 15h-2v-6h2zm0-8h-2V7h2z"/></svg>
+    </div>
+    <div class="nav-logo-text"><span>HAS</span> Physiotherapy</div>
+  </div>
+  <div class="nav-links">
+    <a href="#services">Services</a>
+    <a href="#book">Book</a>
+    <a href="#about">About</a>
+    <a href="#hours">Hours</a>
+    <a href="#location">Location</a>
+  </div>
+  <a href="#book" class="nav-book">Book Appointment</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-left">
+    <div class="hero-badge">Open Mon – Sat · 9am – 6pm</div>
+    <h1 class="hero-title">Expert physio care<br>in <em>Nugegoda</em></h1>
+    <p class="hero-sub">40 years of clinical expertise from Sri Lanka's General Hospital. Specialist in pain relief, rehabilitation and therapeutic treatments — book your appointment in seconds via WhatsApp.</p>
+    <div class="hero-ctas">
+      <button class="btn-primary" onclick="document.getElementById('book').scrollIntoView({behavior:'smooth'})">
+        📅 Book Appointment
+      </button>
+      <button class="btn-outline" onclick="document.getElementById('services').scrollIntoView({behavior:'smooth'})">Our Services</button>
+    </div>
+    <div class="hero-trust">
+      <div class="htrust"><div class="htrust-dot"></div>40 yrs experience</div>
+      <div class="htrust"><div class="htrust-dot"></div>General Hospital trained</div>
+      <div class="htrust"><div class="htrust-dot"></div>Instant WA booking</div>
+    </div>
+  </div>
+  <div class="hero-right">
+    <!-- floating badges -->
+    <div class="float-badge fb1">
+      <div class="fb-icon" style="background:#e8f7f5;">🏥</div>
+      <div class="fb-text"><strong>Superintendent</strong><span>Former GH Colombo</span></div>
+    </div>
+    <div class="float-badge fb2">
+      <div class="fb-icon" style="background:#f0fdf4;">⚡</div>
+      <div class="fb-text"><strong>Ultrasound Therapy</strong><span>Advanced equipment</span></div>
+    </div>
+    <!-- main card -->
+    <div class="hero-card">
+      <div class="hero-card-header">
+        <div class="hero-card-avatar">
+          <svg viewBox="0 0 24 24"><path d="M12 12c2.7 0 5-2.3 5-5s-2.3-5-5-5-5 2.3-5 5 2.3 5 5 5zm0 2c-3.3 0-10 1.7-10 5v2h20v-2c0-3.3-6.7-5-10-5z"/></svg>
+        </div>
+        <div>
+          <div class="hero-card-name">HAS Physiotherapy</div>
+          <div class="hero-card-title">Nugegoda, Sri Lanka</div>
+          <div class="hero-card-exp">⭐ 40 Years Experience</div>
+        </div>
+      </div>
+      <div class="hours-strip">
+        <div class="hours-row" style="display:flex;justify-content:space-between;align-items:center;padding:0;border:none;">
+          <div class="hours-label">🕘 Today's Hours</div>
+          <div class="hours-val" id="todayHours">9:00 AM – 6:00 PM</div>
+        </div>
+        <div class="hours-note" id="todayNote">Open now · Walk-ins welcome</div>
+      </div>
+      <div class="services-mini">
+        <div class="svc-mini"><div class="svc-mini-icon">🔊</div><div class="svc-mini-name">Ultrasound</div></div>
+        <div class="svc-mini"><div class="svc-mini-icon">💡</div><div class="svc-mini-name">IR Lamp</div></div>
+        <div class="svc-mini"><div class="svc-mini-icon">🤲</div><div class="svc-mini-name">Manual Therapy</div></div>
+        <div class="svc-mini"><div class="svc-mini-icon">🏃</div><div class="svc-mini-name">Rehabilitation</div></div>
+      </div>
+      <button class="wa-book-btn" onclick="document.getElementById('book').scrollIntoView({behavior:'smooth'})">
+        <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.123.553 4.116 1.524 5.845L.057 23.547a.562.562 0 0 0 .694.547l5.888-1.539A11.95 11.95 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.793 9.793 0 0 1-5.027-1.384l-.36-.214-3.735.978.997-3.645-.234-.374A9.781 9.781 0 0 1 2.182 12C2.182 6.567 6.567 2.182 12 2.182S21.818 6.567 21.818 12 17.433 21.818 12 21.818z"/></svg>
+        Book via WhatsApp Now
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST BAR -->
+<div class="trust-bar">
+  <div class="tbar-item"><div class="tbar-icon">🏥</div>Former Superintendent — General Hospital Colombo</div>
+  <div class="tbar-item"><div class="tbar-icon">⏱</div>40 Years Clinical Experience</div>
+  <div class="tbar-item"><div class="tbar-icon">🔊</div>Ultrasound & IR Lamp Therapy</div>
+  <div class="tbar-item"><div class="tbar-icon">📍</div>Nugegoda, Sri Lanka</div>
+</div>
+
+<!-- SERVICES -->
+<section class="section services" id="services">
+  <div class="eyebrow">What We Treat</div>
+  <div class="sec-title">Specialised<br><em>physiotherapy services</em></div>
+  <p class="services-intro">Our clinic combines 40 years of hands-on expertise with advanced therapeutic equipment. Whether you're recovering from injury, managing chronic pain, or seeking rehabilitation, we have the right treatment for you.</p>
+  <div class="svc-grid">
+    <div class="svc-card">
+      <div class="svc-icon-wrap">🔊</div>
+      <div class="svc-name">Ultrasound Therapy</div>
+      <div class="svc-desc">Deep tissue ultrasound therapy that penetrates below the skin surface to treat muscle injuries, tendonitis, joint inflammation and chronic pain conditions with precision.</div>
+      <div class="svc-tag">Advanced Equipment</div>
+    </div>
+    <div class="svc-card">
+      <div class="svc-icon-wrap">💡</div>
+      <div class="svc-name">Infrared (IR) Lamp</div>
+      <div class="svc-desc">Infrared heat therapy to improve blood circulation, relieve muscle stiffness, reduce joint pain and accelerate the natural healing process for a wide range of conditions.</div>
+      <div class="svc-tag">Pain Relief</div>
+    </div>
+    <div class="svc-card">
+      <div class="svc-icon-wrap">🤲</div>
+      <div class="svc-name">Manual Therapy</div>
+      <div class="svc-desc">Expert hands-on treatment including joint mobilisation, soft tissue massage and spinal manipulation. Highly effective for neck pain, back pain and sports injuries.</div>
+      <div class="svc-tag">40 Yrs Expertise</div>
+    </div>
+    <div class="svc-card">
+      <div class="svc-icon-wrap">🏃</div>
+      <div class="svc-name">Rehabilitation</div>
+      <div class="svc-desc">Structured rehabilitation programmes for post-surgery recovery, stroke rehabilitation, sports injuries and musculoskeletal conditions — tailored to your specific goals.</div>
+      <div class="svc-tag">Personalised Plan</div>
+    </div>
+    <div class="svc-card">
+      <div class="svc-icon-wrap">🦴</div>
+      <div class="svc-name">Orthopaedic Physio</div>
+      <div class="svc-desc">Specialist treatment for bone, joint and muscle problems including fracture rehab, knee pain, hip pain, frozen shoulder and post-operative recovery programmes.</div>
+      <div class="svc-tag">Joint Specialist</div>
+    </div>
+    <div class="svc-card">
+      <div class="svc-icon-wrap">⚡</div>
+      <div class="svc-name">Electrotherapy</div>
+      <div class="svc-desc">TENS and electrical stimulation therapy to manage acute and chronic pain, reduce swelling, strengthen weakened muscles and promote faster tissue healing.</div>
+      <div class="svc-tag">Pain Management</div>
+    </div>
+  </div>
+</section>
+
+<!-- BOOKING WIDGET -->
+<section class="booking" id="book">
+  <div class="booking-inner">
+    <div class="booking-left">
+      <div class="eyebrow">Book Appointment</div>
+      <div class="sec-title">Pick a time,<br><em>we'll confirm it</em></div>
+      <p class="booking-sub">Select your preferred day and time slot below. Tapping "Confirm on WhatsApp" opens a pre-filled message straight to the clinic — we reply to confirm your booking within minutes.</p>
+      <div class="booking-info">
+        <div class="binfo"><div class="binfo-icon">⚡</div><div class="binfo-text"><strong>Instant Confirmation</strong>We reply on WhatsApp within minutes to confirm your slot.</div></div>
+        <div class="binfo"><div class="binfo-icon">🚶</div><div class="binfo-text"><strong>Walk-ins also welcome</strong>No appointment needed — just come in during open hours.</div></div>
+        <div class="binfo"><div class="binfo-icon">📞</div><div class="binfo-text"><strong>Call us directly</strong><a href="tel:0714789763" style="color:var(--teal-light);text-decoration:none;">0714 789 763</a> · Mon–Sat 9am–6pm</div></div>
+      </div>
+    </div>
+
+    <!-- BOOKING WIDGET -->
+    <div class="booking-widget">
+      <div class="bw-title">Book Your Session</div>
+      <div class="bw-sub">Select a day and time slot below</div>
+
+      <div class="day-label">Choose a day</div>
+      <div class="day-scroll" id="dayScroll"></div>
+
+      <div class="slot-label">Choose a time slot</div>
+      <div class="slots-grid" id="slotsGrid"></div>
+
+      <div class="bw-name-wrap">
+        <label class="bw-name-label" for="patientName">Your name</label>
+        <input type="text" id="patientName" class="bw-name-input" placeholder="e.g. Kasun Perera">
+      </div>
+
+      <button class="bw-confirm" id="confirmBtn" onclick="sendWhatsAppBooking()">
+        <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.123.553 4.116 1.524 5.845L.057 23.547a.562.562 0 0 0 .694.547l5.888-1.539A11.95 11.95 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.793 9.793 0 0 1-5.027-1.384l-.36-.214-3.735.978.997-3.645-.234-.374A9.781 9.781 0 0 1 2.182 12C2.182 6.567 6.567 2.182 12 2.182S21.818 6.567 21.818 12 17.433 21.818 12 21.818z"/></svg>
+        Confirm on WhatsApp
+      </button>
+      <div class="bw-hint">Opens WhatsApp with your booking details pre-filled ✓</div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT / CREDENTIALS -->
+<section class="about" id="about">
+  <div class="about-grid">
+    <div class="about-credentials">
+      <div class="eyebrow" style="color:var(--teal);margin-bottom:16px;">Credentials & Experience</div>
+      <div class="cred-card">
+        <div class="cred-icon">🏛️</div>
+        <div>
+          <div class="cred-title">Superintendent of Physiotherapists — General Hospital Colombo</div>
+          <div class="cred-desc">Held the most senior physiotherapy position at Sri Lanka's largest and most prestigious public hospital. Led the entire physiotherapy department and clinical team.</div>
+        </div>
+      </div>
+      <div class="cred-card">
+        <div class="cred-icon">⏱️</div>
+        <div>
+          <div class="cred-title">40 Years of Clinical Experience</div>
+          <div class="cred-desc">Four decades of hands-on physiotherapy practice spanning orthopaedics, neurology, sports medicine, paediatrics and geriatric rehabilitation.</div>
+        </div>
+      </div>
+      <div class="cred-card">
+        <div class="cred-icon">🔊</div>
+        <div>
+          <div class="cred-title">Advanced Therapeutic Equipment</div>
+          <div class="cred-desc">Equipped with clinical-grade ultrasound therapy and infrared (IR) lamp systems — the same modalities used in major hospital physiotherapy departments.</div>
+        </div>
+      </div>
+      <div class="cred-card">
+        <div class="cred-icon">🤝</div>
+        <div>
+          <div class="cred-title">Personalised, One-on-One Care</div>
+          <div class="cred-desc">Unlike large clinics, every patient is seen personally by our senior physiotherapist. No junior staff, no rushing — full attention on your recovery.</div>
+        </div>
+      </div>
+    </div>
+    <div class="about-right">
+      <div class="eyebrow">About HAS Physiotherapy</div>
+      <div class="sec-title" style="margin-bottom:16px;">Hospital expertise,<br><em>personal care</em></div>
+      <p class="about-text">HAS Physiotherapy Centre in Nugegoda is led by a physiotherapist with 40 years of experience at the General Hospital Colombo — Sri Lanka's premier teaching hospital. After retiring as Superintendent of Physiotherapists, the highest physiotherapy designation at General Hospital, our principal physiotherapist now offers the same world-class care in a warm, accessible private clinic setting.</p>
+      <p class="about-text">We specialise in pain management, post-operative rehabilitation, musculoskeletal conditions, neurological recovery and sports injuries. Every treatment plan is carefully tailored — no generic protocols.</p>
+      <div class="about-stat-row">
+        <div class="astat"><div class="astat-n">40+</div><div class="astat-l">Years experience</div></div>
+        <div class="astat"><div class="astat-n">GH</div><div class="astat-l">Colombo trained</div></div>
+        <div class="astat"><div class="astat-n">1:1</div><div class="astat-l">Personal sessions</div></div>
+        <div class="astat"><div class="astat-n">6</div><div class="astat-l">Days a week</div></div>
+      </div>
+      <a href="https://wa.me/94714789763?text=Hi%2C%20I%27d%20like%20to%20know%20more%20about%20HAS%20Physiotherapy." class="about-wa" target="_blank">
+        <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.123.553 4.116 1.524 5.845L.057 23.547a.562.562 0 0 0 .694.547l5.888-1.539A11.95 11.95 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.793 9.793 0 0 1-5.027-1.384l-.36-.214-3.735.978.997-3.645-.234-.374A9.781 9.781 0 0 1 2.182 12C2.182 6.567 6.567 2.182 12 2.182S21.818 6.567 21.818 12 17.433 21.818 12 21.818z"/></svg>
+        Chat with us on WhatsApp
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- WHY CHOOSE US -->
+<section class="whyus">
+  <div class="eyebrow">Why Choose HAS</div>
+  <div class="sec-title" style="margin-bottom:40px;">Care you can<br><em>trust completely</em></div>
+  <div class="why-grid">
+    <div class="why-card">
+      <div class="why-icon">🏆</div>
+      <div class="why-title">Senior Specialist</div>
+      <div class="why-desc">Treated by a former Superintendent — the highest clinical rank in Sri Lanka's public health system</div>
+    </div>
+    <div class="why-card">
+      <div class="why-icon">⚡</div>
+      <div class="why-title">Easy WA Booking</div>
+      <div class="why-desc">Pick your slot on this page, tap confirm — WhatsApp opens pre-filled, booking done in 30 seconds</div>
+    </div>
+    <div class="why-card">
+      <div class="why-icon">🔬</div>
+      <div class="why-title">Advanced Equipment</div>
+      <div class="why-desc">Clinical-grade ultrasound therapy and infrared lamp — hospital-standard treatment in a private clinic</div>
+    </div>
+    <div class="why-card">
+      <div class="why-icon">💛</div>
+      <div class="why-title">Personalised Care</div>
+      <div class="why-desc">Every patient seen one-on-one by the senior physiotherapist. No rushing, no delegation to assistants</div>
+    </div>
+  </div>
+</section>
+
+<!-- HOURS -->
+<section class="hours-section" id="hours">
+  <div class="hours-inner">
+    <div>
+      <div class="eyebrow">Opening Hours</div>
+      <div class="sec-title">We're open<br><em>6 days a week</em></div>
+      <p class="hours-desc">Walk-ins are welcome anytime during opening hours. For specific time slots or busy periods, booking via WhatsApp is recommended to avoid waiting.</p>
+    </div>
+    <div class="hours-table">
+      <div class="hours-row header">
+        <div>Day</div><div>Hours</div><div style="text-align:right">Status</div>
+      </div>
+      <div class="hours-row"><div class="hours-day">Monday</div><div class="hours-time">9:00 AM – 6:00 PM</div><div class="hours-status"><span class="status-open">Open</span></div></div>
+      <div class="hours-row"><div class="hours-day">Tuesday</div><div class="hours-time">9:00 AM – 6:00 PM</div><div class="hours-status"><span class="status-open">Open</span></div></div>
+      <div class="hours-row"><div class="hours-day">Wednesday</div><div class="hours-time">9:00 AM – 6:00 PM</div><div class="hours-status"><span class="status-open">Open</span></div></div>
+      <div class="hours-row"><div class="hours-day">Thursday</div><div class="hours-time">9:00 AM – 6:00 PM</div><div class="hours-status"><span class="status-open">Open</span></div></div>
+      <div class="hours-row"><div class="hours-day">Friday</div><div class="hours-time">9:00 AM – 6:00 PM</div><div class="hours-status"><span class="status-open">Open</span></div></div>
+      <div class="hours-row"><div class="hours-day">Saturday</div><div class="hours-time">9:00 AM – 6:00 PM</div><div class="hours-status"><span class="status-open">Open</span></div></div>
+      <div class="hours-row"><div class="hours-day">Sunday</div><div class="hours-time">Closed</div><div class="hours-status"><span class="status-closed">Closed</span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- LOCATION -->
+<section class="location" id="location">
+  <div class="eyebrow">Find Us</div>
+  <div class="sec-title" style="margin-bottom:40px;">We're in<br><em>Nugegoda</em></div>
+  <div class="location-grid">
+    <div class="map-placeholder">
+      <div class="map-pin">📍</div>
+      <div class="map-label">HAS Physiotherapy Centre</div>
+      <div class="map-sub">Nugegoda, Sri Lanka</div>
+      <a href="https://maps.google.com/?q=Nugegoda+Sri+Lanka" target="_blank" class="map-glink">Open in Google Maps ↗</a>
+    </div>
+    <div class="location-info">
+      <div class="linfo">
+        <div class="linfo-icon">📍</div>
+        <div>
+          <div class="linfo-title">Address</div>
+          <div class="linfo-val">HAS Physiotherapy Centre</div>
+          <div class="linfo-note">Nugegoda, Sri Lanka</div>
+        </div>
+      </div>
+      <div class="linfo">
+        <div class="linfo-icon">📞</div>
+        <div>
+          <div class="linfo-title">Phone</div>
+          <div class="linfo-val"><a href="tel:0714789763" style="color:var(--navy);text-decoration:none;">0714 789 763</a></div>
+          <div class="linfo-note">Mon – Sat · 9:00 AM – 6:00 PM</div>
+        </div>
+      </div>
+      <div class="linfo">
+        <div class="linfo-icon" style="font-size:20px;">💬</div>
+        <div>
+          <div class="linfo-title">WhatsApp</div>
+          <div class="linfo-val"><a href="https://wa.me/94714789763" target="_blank" style="color:var(--wa-dark);text-decoration:none;">+94 714 789 763</a></div>
+          <div class="linfo-note">Message us to book or ask questions</div>
+        </div>
+      </div>
+      <div class="linfo">
+        <div class="linfo-icon">🚗</div>
+        <div>
+          <div class="linfo-title">Getting Here</div>
+          <div class="linfo-val">Easily accessible from central Colombo</div>
+          <div class="linfo-note">Near Nugegoda town centre — parking available</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div>
+      <div class="footer-brand">
+        <div class="footer-brand-mark"><svg viewBox="0 0 24 24" fill="white"><path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm1 15h-2v-6h2zm0-8h-2V7h2z"/></svg></div>
+        <div class="footer-brand-name">HAS Physiotherapy</div>
+      </div>
+      <p class="footer-desc">Expert physiotherapy care in Nugegoda, led by a former Superintendent of Physiotherapists at General Hospital Colombo with 40 years of clinical experience.</p>
+    </div>
+    <div class="footer-col">
+      <div class="footer-col-t">Services</div>
+      <ul>
+        <li><a href="#">Ultrasound Therapy</a></li>
+        <li><a href="#">Infrared (IR) Lamp</a></li>
+        <li><a href="#">Manual Therapy</a></li>
+        <li><a href="#">Rehabilitation</a></li>
+        <li><a href="#">Orthopaedic Physio</a></li>
+        <li><a href="#">Electrotherapy</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <div class="footer-col-t">Contact</div>
+      <ul>
+        <li><a href="tel:0714789763">📞 0714 789 763</a></li>
+        <li><a href="https://wa.me/94714789763" target="_blank">💬 WhatsApp Us</a></li>
+        <li><a href="#book">📅 Book Appointment</a></li>
+        <li><a href="#hours">🕘 Opening Hours</a></li>
+        <li><a href="#location">📍 Find Us</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="footer-copy">© 2026 HAS Physiotherapy Centre · Nugegoda, Sri Lanka</div>
+    <div class="footer-open">Open Mon–Sat · 9:00 AM – 6:00 PM</div>
+  </div>
+</footer>
+
+<script>
+// ── BOOKING WIDGET LOGIC ──
+
+const WA_NUMBER = '94714789763';
+const DAYS_SHORT = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+const DAYS_FULL = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+const MONTHS = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+
+// All time slots
+const ALL_SLOTS = ['9:00 AM','9:30 AM','10:00 AM','10:30 AM','11:00 AM','11:30 AM','12:00 PM','12:30 PM','1:00 PM','1:30 PM','2:00 PM','2:30 PM','3:00 PM','3:30 PM','4:00 PM','4:30 PM','5:00 PM','5:30 PM'];
+
+// Simulate some taken slots (in real use you'd have a backend)
+const TAKEN = {'9:00 AM':true, '10:30 AM':true, '2:00 PM':true};
+
+let selectedDay = null;
+let selectedSlot = null;
+
+// Build next 7 days (excluding Sundays)
+function buildDays() {
+  const container = document.getElementById('dayScroll');
+  const today = new Date();
+  let daysAdded = 0;
+  let offset = 0;
+  while (daysAdded < 7) {
+    const d = new Date(today);
+    d.setDate(today.getDate() + offset);
+    offset++;
+    const dow = d.getDay();
+    const isClosed = dow === 0; // Sunday
+    const btn = document.createElement('button');
+    btn.className = 'day-btn' + (isClosed ? ' closed' : '');
+    btn.innerHTML = `<span class="day-name">${DAYS_SHORT[dow]}</span><span class="day-date">${d.getDate()}</span><span style="font-size:10px;opacity:.7">${MONTHS[d.getMonth()]}</span>`;
+    btn.dataset.full = `${DAYS_FULL[dow]}, ${d.getDate()} ${MONTHS[d.getMonth()]}`;
+    btn.dataset.closed = isClosed ? '1' : '0';
+    if (!isClosed) {
+      btn.onclick = () => selectDay(btn, btn.dataset.full);
+      // Auto-select first available day
+      if (daysAdded === 0 && selectedDay === null) {
+        selectDay(btn, btn.dataset.full);
+      }
+    }
+    container.appendChild(btn);
+    daysAdded++;
+  }
+}
+
+function selectDay(btn, label) {
+  document.querySelectorAll('.day-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  selectedDay = label;
+  selectedSlot = null;
+  buildSlots();
+  updateConfirmBtn();
+}
+
+function buildSlots() {
+  const grid = document.getElementById('slotsGrid');
+  grid.innerHTML = '';
+  ALL_SLOTS.forEach(slot => {
+    const btn = document.createElement('button');
+    const isTaken = TAKEN[slot];
+    btn.className = 'slot-btn' + (isTaken ? ' taken' : '');
+    btn.textContent = slot;
+    if (!isTaken) {
+      btn.onclick = () => selectSlot(btn, slot);
+    }
+    grid.appendChild(btn);
+  });
+}
+
+function selectSlot(btn, slot) {
+  document.querySelectorAll('.slot-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  selectedSlot = slot;
+  updateConfirmBtn();
+}
+
+function updateConfirmBtn() {
+  const btn = document.getElementById('confirmBtn');
+  btn.disabled = !(selectedDay && selectedSlot);
+}
+
+function sendWhatsAppBooking() {
+  const name = document.getElementById('patientName').value.trim();
+  if (!selectedDay || !selectedSlot) return;
+  const nameStr = name ? `*Patient:* ${name}\n` : '';
+  const msg =
+    `Hello HAS Physiotherapy! 👋\n\n` +
+    `I would like to book an appointment:\n\n` +
+    `📅 *Day:* ${selectedDay}\n` +
+    `🕐 *Time:* ${selectedSlot}\n` +
+    `${nameStr}\n` +
+    `Please confirm my appointment. Thank you!`;
+  const url = `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(msg)}`;
+  window.open(url, '_blank');
+}
+
+// Update today's hours display
+function updateTodayHours() {
+  const dow = new Date().getDay();
+  const hoursEl = document.getElementById('todayHours');
+  const noteEl = document.getElementById('todayNote');
+  if (dow === 0) {
+    hoursEl.textContent = 'Closed today';
+    hoursEl.style.color = '#E05050';
+    noteEl.textContent = 'We reopen Monday at 9:00 AM';
+  } else {
+    const now = new Date();
+    const h = now.getHours();
+    const isOpen = h >= 9 && h < 18;
+    noteEl.textContent = isOpen ? '🟢 Open now · Walk-ins welcome' : '🔴 Currently closed · Opens 9:00 AM';
+    noteEl.style.color = isOpen ? 'var(--teal)' : '#E05050';
+  }
+}
+
+// Init
+buildDays();
+buildSlots();
+updateTodayHours();
+updateConfirmBtn();
+</script>
+</body>
+</html>
