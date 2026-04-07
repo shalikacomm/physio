@@ -259,6 +259,124 @@ footer{background:var(--navy);color:rgba(255,255,255,0.5);padding:52px 72px 32px
 /* ── WA SVG ── */
 .wa-svg-d1{fill-rule:evenodd;}
 @keyframes fadeUp{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:translateY(0)}}
+
+/* ── HAMBURGER ── */
+.hamburger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:6px;z-index:400;}
+.hamburger span{display:block;width:22px;height:2px;background:var(--navy);border-radius:2px;transition:all .3s;}
+.hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+.hamburger.open span:nth-child(2){opacity:0;}
+.hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+.mobile-nav{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:white;z-index:350;flex-direction:column;align-items:center;justify-content:center;gap:2rem;padding:2rem;}
+.mobile-nav.open{display:flex;}
+.mobile-nav a{font-size:1.3rem;color:var(--navy);text-decoration:none;font-weight:500;letter-spacing:.02em;transition:color .2s;}
+.mobile-nav a:hover{color:var(--teal);}
+.mobile-nav .nav-book{font-size:1rem;margin-top:1rem;}
+
+/* ── RESPONSIVE BREAKPOINTS ── */
+
+/* Tablet landscape — 1024px */
+@media(max-width:1024px){
+  nav{padding:14px 28px;}
+  .hero{grid-template-columns:1fr;}
+  .hero-right{display:none;}
+  .hero-left{padding:80px 40px 60px;align-items:center;text-align:center;}
+  .hero-sub{margin-left:auto;margin-right:auto;}
+  .hero-ctas{justify-content:center;}
+  .hero-trust{justify-content:center;flex-wrap:wrap;}
+  .section{padding:64px 40px;}
+  .svc-grid{grid-template-columns:repeat(2,1fr);}
+  .booking{padding:64px 40px;}
+  .booking-inner{grid-template-columns:1fr;gap:40px;}
+  .about{padding:64px 40px;}
+  .about-grid{grid-template-columns:1fr;gap:40px;}
+  .whyus{padding:64px 40px;}
+  .why-grid{grid-template-columns:repeat(2,1fr);}
+  .hours-section{padding:64px 40px;}
+  .hours-inner{grid-template-columns:1fr;gap:40px;}
+  .location{padding:64px 40px;}
+  .location-grid{grid-template-columns:1fr;gap:32px;}
+  footer{padding:48px 40px 28px;}
+  .footer-top{grid-template-columns:1fr 1fr;gap:32px;}
+  .trust-bar{padding:16px 28px;gap:28px;}
+}
+
+/* Tablet portrait — 768px */
+@media(max-width:768px){
+  nav{padding:12px 20px;}
+  .nav-links,.nav-book{display:none;}
+  .hamburger{display:flex;}
+  .hero-left{padding:72px 24px 52px;}
+  h1.hero-title{font-size:clamp(32px,7vw,48px);}
+  .hero-ctas{flex-direction:column;width:100%;max-width:320px;margin:0 auto;}
+  .btn-primary,.btn-outline{width:100%;justify-content:center;}
+  .hero-trust{gap:12px;}
+  .trust-bar{flex-direction:column;gap:14px;text-align:center;padding:20px 20px;}
+  .section{padding:52px 20px;}
+  .svc-grid{grid-template-columns:1fr;}
+  .booking{padding:52px 20px;}
+  .booking-inner{gap:32px;}
+  .booking-widget{padding:24px 20px;}
+  .slots-grid{grid-template-columns:repeat(3,1fr);}
+  .about{padding:52px 20px;}
+  .about-grid{gap:32px;}
+  .about-stat-row{grid-template-columns:1fr 1fr;}
+  .whyus{padding:52px 20px;}
+  .why-grid{grid-template-columns:repeat(2,1fr);}
+  .hours-section{padding:52px 20px;}
+  .hours-inner{gap:32px;}
+  .location{padding:52px 20px;}
+  .location-grid{gap:28px;}
+  footer{padding:40px 20px 24px;}
+  .footer-top{grid-template-columns:1fr;gap:28px;}
+  .footer-bottom{flex-direction:column;align-items:flex-start;gap:8px;}
+  .sec-title{font-size:clamp(28px,6vw,40px);margin-bottom:32px;}
+}
+
+/* Mobile — 480px */
+@media(max-width:480px){
+  nav{padding:10px 16px;}
+  .nav-logo-text{font-size:16px;}
+  .hero-left{padding:68px 16px 44px;}
+  h1.hero-title{font-size:clamp(28px,8vw,38px);}
+  .hero-sub{font-size:14px;}
+  .hero-trust{gap:10px;}
+  .htrust{font-size:11px;}
+  .trust-bar{gap:12px;padding:16px;}
+  .tbar-item{font-size:11px;}
+  .section{padding:44px 16px;}
+  .sec-title{font-size:28px;margin-bottom:28px;}
+  .svc-card{padding:24px 20px;}
+  .booking{padding:44px 16px;}
+  .booking-widget{padding:20px 16px;}
+  .slots-grid{grid-template-columns:repeat(2,1fr);}
+  .slot-btn{font-size:12px;padding:9px 6px;}
+  .about{padding:44px 16px;}
+  .about-stat-row{grid-template-columns:1fr 1fr;}
+  .astat-n{font-size:28px;}
+  .whyus{padding:44px 16px;}
+  .why-grid{grid-template-columns:1fr 1fr;gap:12px;}
+  .why-card{padding:20px 16px;}
+  .hours-section{padding:44px 16px;}
+  .hours-row{grid-template-columns:1fr 1fr;padding:12px 16px;}
+  .hours-status{display:none;}
+  .location{padding:44px 16px;}
+  .map-placeholder{height:240px;}
+  footer{padding:36px 16px 20px;}
+  .footer-top{gap:24px;}
+  .footer-bottom{gap:6px;}
+  .wa-float{padding:10px 16px;font-size:12px;bottom:16px;right:16px;}
+  .binfo{padding:12px 14px;}
+  .cred-card{padding:16px 18px;}
+}
+
+/* Very small — 360px */
+@media(max-width:360px){
+  h1.hero-title{font-size:26px;}
+  .why-grid{grid-template-columns:1fr;}
+  .slots-grid{grid-template-columns:repeat(2,1fr);}
+  .about-stat-row{grid-template-columns:1fr;}
+  .hero-trust{flex-direction:column;align-items:center;gap:8px;}
+}
 </style>
 </head>
 <body>
@@ -286,7 +404,23 @@ footer{background:var(--navy);color:rgba(255,255,255,0.5);padding:52px 72px 32px
     <a href="#location">Location</a>
   </div>
   <a href="#book" class="nav-book">Book Appointment</a>
+  <button class="hamburger" id="hamburger" aria-label="Open menu">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
+
+<!-- MOBILE NAV OVERLAY -->
+<div class="mobile-nav" id="mobileNav">
+  <button class="hamburger open" id="mobileClose" aria-label="Close menu" style="position:absolute;top:20px;right:20px;">
+    <span></span><span></span><span></span>
+  </button>
+  <a href="#services" onclick="closeMobileNav()">Services</a>
+  <a href="#book" onclick="closeMobileNav()">Book Appointment</a>
+  <a href="#about" onclick="closeMobileNav()">About</a>
+  <a href="#hours" onclick="closeMobileNav()">Hours</a>
+  <a href="#location" onclick="closeMobileNav()">Location</a>
+  <a href="https://wa.me/94714789763?text=Hi%20HAS%20Physiotherapy!%20I%27d%20like%20to%20book%20an%20appointment." class="nav-book" target="_blank" onclick="closeMobileNav()">📅 Book via WhatsApp</a>
+</div>
 
 <!-- HERO -->
 <section class="hero">
@@ -751,6 +885,25 @@ buildDays();
 buildSlots();
 updateTodayHours();
 updateConfirmBtn();
+
+// ── HAMBURGER MENU ──
+const hamburger = document.getElementById('hamburger');
+const mobileNav = document.getElementById('mobileNav');
+const mobileClose = document.getElementById('mobileClose');
+
+hamburger.addEventListener('click', () => {
+  hamburger.classList.toggle('open');
+  mobileNav.classList.toggle('open');
+  document.body.style.overflow = mobileNav.classList.contains('open') ? 'hidden' : '';
+});
+
+mobileClose.addEventListener('click', closeMobileNav);
+
+function closeMobileNav() {
+  hamburger.classList.remove('open');
+  mobileNav.classList.remove('open');
+  document.body.style.overflow = '';
+}
 </script>
 </body>
 </html>
